@@ -1,0 +1,17 @@
+<h1>Can you provide more detail?</h1>
+<p className="instruction">
+  Do not include personal or financial information like your National Insurance
+  number or credit card details
+</p>
+<textarea
+  onChange="{handleChange}"
+  id="user-details"
+  maxlength="{200}"
+  name="user-details"
+  title="user-details"
+></textarea>
+<label htmlFor="user-details"></label>
+
+<p className="char-counter">
+  You have {characterLimit - userInput.length} characters remaining
+</p>
