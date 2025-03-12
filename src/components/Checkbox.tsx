@@ -4,14 +4,14 @@ interface CheckboxProps {
 }
 
 export default function Checkbox(props: CheckboxProps) {
-  const handleChange = (event: React.FormEvent<HTMLFormElement>) => {
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     props.setInStockInput(event.target.checked);
     console.log(event.target.checked);
   };
   return (
     <>
-      <form action="" onChange={handleChange}>
-        <input type="checkbox" name="in-stock" />
+      <form action="">
+        <input type="checkbox" name="in-stock" onChange={handleChange} />
       </form>
     </>
   );

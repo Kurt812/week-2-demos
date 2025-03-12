@@ -4,14 +4,14 @@ interface SearchBarProps {
 }
 
 export default function SearchBar(props: SearchBarProps) {
-  const handleChange = (event: React.FormEvent<HTMLFormElement>) => {
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     props.setSearchInput(event.target.value);
     console.log(event.target.value);
   };
   return (
     <>
-      <form action="" onChange={handleChange}>
-        <input type="text" name="product-search" />
+      <form action="">
+        <input type="text" name="product-search" onChange={handleChange} />
         <label htmlFor="product-search"></label>
       </form>
     </>

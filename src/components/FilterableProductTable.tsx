@@ -3,8 +3,10 @@ import ProductTable from "./ProductTable";
 import SearchBar from "./SearchBar";
 import Checkbox from "./Checkbox";
 
+export type CategoryType = "Fruits" | "Vegetables";
+
 export interface Product {
-  category: string;
+  category: CategoryType;
   price: string;
   stocked: boolean;
   name: string;
@@ -20,7 +22,7 @@ export default function FilterableProductTable({
   const [searchInput, setSearchInput] = useState("apple");
   const [inStockInput, setInStockInput] = useState(false);
   let filteredProducts = products.filter((product) =>
-    product.name.includes(searchInput)
+    product.name.toLowerCase().includes(searchInput.toLowerCase())
   );
   if (inStockInput === true) {
     filteredProducts = filteredProducts.filter(

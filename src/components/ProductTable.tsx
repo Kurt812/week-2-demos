@@ -1,18 +1,28 @@
 import { Product } from "./FilterableProductTable.tsx";
 import ProductCategoryRow from "./ProductCategoryRow.tsx";
+import { CategoryType } from "./FilterableProductTable.tsx";
 
 export default function ProductTable({ products }: { products: Product[] }) {
   // separate out the list based on the data so I've got fruits and vegetables
 
-  function groupByProductType({ products }: { products: Product[] }) {
-    return Object.groupBy(products, ({ category }) => category);
+  function groupByProductType({
+    products,
+  }: {
+    products: Product[];
+  }): ProductCategories {
+    return Object.groupBy(
+      products,
+      ({ category }) => category
+    ) as ProductCategories; //type casting
   }
-  const productCategories = groupByProductType({ products });
 
+  const productCategories = groupByProductType({ products });
+  const productTypes = Object.keys(productCategories) as CategoryType[];
+  console.log(productCategories);
   return (
     <>
       <h1>Product table here...</h1>
-      {Object.keys(productCategories).map((category) => {
+      {productTypes.map((category) => {
         return (
           <ProductCategoryRow
             category={category}
@@ -23,3 +33,6 @@ export default function ProductTable({ products }: { products: Product[] }) {
     </>
   );
 }
+
+//create a type where the keys are from the category type and the values are going to be the array of products
+type ProductCategories = { [K in CategoryType]: Product[] };

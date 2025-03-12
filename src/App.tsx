@@ -1,6 +1,8 @@
-import FilterableProductTable from "./components/FilterableProductTable";
+import FilterableProductTable, {
+  Product,
+} from "./components/FilterableProductTable";
 
-const PRODUCTS = [
+const PRODUCTS: Product[] = [
   { category: "Fruits", price: "$1", stocked: true, name: "Apple" },
   { category: "Fruits", price: "$1", stocked: true, name: "Dragonfruit" },
   { category: "Fruits", price: "$2", stocked: false, name: "Passionfruit" },
